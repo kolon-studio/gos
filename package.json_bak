@@ -1,0 +1,23 @@
+{
+  "name": "kolonstudio-gos",
+  "email" : "johan@kolon.studio",
+  "version": "1.0.0",
+  "description": "GOS - Gsap on scroll",
+  "main": "index.tsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/kolonstudio/gos.git"
+  },
+  "author": "Kolon studio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://bitbucket.org/kolonstudio/gos/jira"
+  },
+  "homepage": "https://bitbucket.org/kolonstudio/gos#readme",
+  "dependencies": {
+    "gsap": "^3.7.1",
+    "lodash.debounce": "^4.0.8",
+    "lodash.merge": "^4.6.2",
+    "lodash.throttle": "^4.1.1"
+  }
+}
