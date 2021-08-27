@@ -9,7 +9,7 @@
     "url": "git+https://bitbucket.org/kolonstudio/gos.git"
   },
   "author": "Kolon studio",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://bitbucket.org/kolonstudio/gos/jira"
   },
