@@ -4,7 +4,6 @@
   "description": "Gsap on scroll",
   "main": "index.tsx",
   "dependencies": {
-    
   },
   "devDependencies": {},
   "scripts": {
