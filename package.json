@@ -1,5 +1,5 @@
 {
-  "name": "@kolonstudio/gos",
+  "name": "kolonstudio-gos",
   "version": "1.0.0",
   "description": "Gsap on scroll",
   "main": "index.tsx",
