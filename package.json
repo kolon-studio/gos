@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/kolonstudio/gos.git"
+    "url": "git+https://github.com/kolonstudio/gos.git"
   },
   "author": "Kolon studio",
   "license": "ISC",
   "bugs": {
-    "url": "https://bitbucket.org/kolonstudio/gos/issues"
+    "url": "https://github.com/kolonstudio/gos/issues"
   },
-  "homepage": "https://bitbucket.org/kolonstudio/gos#readme",
+  "homepage": "https://github.com/kolonstudio/gos#readme",
   "dependencies": {
     "gsap": "^3.7.1",
     "lodash.debounce": "^4.0.8",
