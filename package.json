@@ -1,0 +1,25 @@
+{
+  "name": "gos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kolonstudio/gos.git"
+  },
+  "author": "Kolon studio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kolonstudio/gos/issues"
+  },
+  "homepage": "https://github.com/kolonstudio/gos#readme",
+  "dependencies": {
+    "gsap": "^3.7.1",
+    "lodash.debounce": "^4.0.8",
+    "lodash.merge": "^4.6.2",
+    "lodash.throttle": "^4.1.1"
+  }
+}
