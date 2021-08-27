@@ -10,7 +10,7 @@
 const isObject = (string = '') =>
   string.charAt(0) === '{' && string.charAt(string.length-1) === '}'
 
-export default (el, key, fallback) => {
+export default (el, key, fallback = null) => {
   let attr = el.getAttribute('data-gos-' + key);
 
   if (typeof attr !== 'undefined') {

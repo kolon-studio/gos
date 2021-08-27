@@ -1,10 +1,3 @@
-/**
- * *******************************************************
- * GOS (Gsap on scroll) - aos alternative
- * made to animate elements on scroll in both directions
- * *******************************************************
- */
-
 // Modules & helpers
 import throttle from 'lodash.throttle';
 import debounce from 'lodash.debounce';

@@ -1,6 +1,4 @@
 import detect from './detector';
-import animations from '../animations';
-
 
 const fireEvent = (eventName, data) => {
   let customEvent;
