@@ -1,5 +1,5 @@
 {
-  "name": "gos",
+  "name": "kolonstudio-gos",
   "version": "1.0.0",
   "description": "",
   "main": "index.tsx",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kolonstudio/gos.git"
+    "url": "git+https://bitbucket.org/kolonstudio/gos.git"
   },
   "author": "Kolon studio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kolonstudio/gos/issues"
+    "url": "https://bitbucket.org/kolonstudio/gos/issues"
   },
-  "homepage": "https://github.com/kolonstudio/gos#readme",
+  "homepage": "https://bitbucket.org/kolonstudio/gos#readme",
   "dependencies": {
     "gsap": "^3.7.1",
     "lodash.debounce": "^4.0.8",
