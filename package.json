@@ -1,8 +1,9 @@
 {
   "name": "@kolonstudio/gos",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gsap on scroll",
   "main": "dist/index.js",
+  "types": "types/index.d.js",
   "dependencies": {
     "gsap": "^3.7.1",
     "lodash.debounce": "^4.0.8",

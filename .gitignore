@@ -12,3 +12,6 @@ node_modules
 # Local db files
 .DS_Store
 .rnd
+
+# Mix files
+dist/mix-manifest.json
