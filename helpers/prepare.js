@@ -21,7 +21,6 @@ const prepare = function ($elements, options) {
 
     gsap.set(el.node, {
       ...animations[animationName].defaultStyles,
-      ...style,
       onComplete: () => {
         el.node.removeAttribute('data-gos');
         el.node.removeAttribute('data-gos-offset');

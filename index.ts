@@ -1,8 +1,7 @@
 // Modules & helpers
-import throttle from 'lodash.throttle';
-import debounce from 'lodash.debounce';
-import merge from 'lodash.merge';
-
+import throttle from './libs/throttle';
+import debounce from './libs/debounce';
+import merge from './libs/merge';
 import observer from './libs/observer';
 
 import detect from './helpers/detector';

@@ -1,4 +1,5 @@
 import detect from './detector';
+import animations from '../animations';
 
 const fireEvent = (eventName, data) => {
   let customEvent;
@@ -25,8 +26,8 @@ const applyAnimations = (el, top) => {
 
   const hide = () => {
     if (!el.animated) return;
-    if(options.animations[options.animationName].hasOwnProperty('animatedOut')) {
-      options.animations[options.animationName].animateOut(el.node, {
+    if(animations[options.animationName].hasOwnProperty('animatedOut')) {
+      animations[options.animationName].animateOut(el.node, {
         duration: options.duration / 1000,
         ease: options.ease,
         delay: options.delay / 1000,
@@ -41,7 +42,9 @@ const applyAnimations = (el, top) => {
   const show = () => {
     if (el.animated) return;
 
-    options.animations[options.animationName].animateIn(el.node, {
+    console.log(options);
+
+    animations[options.animationName].animateIn(el.node, {
       duration: options.duration / 1000,
       ease: options.ease,
       delay: options.delay / 1000,
