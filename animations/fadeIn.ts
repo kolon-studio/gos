@@ -11,3 +11,5 @@ const fadeIn: GOSAnimation = {
     })
   }
 }
+
+export default fadeIn;
