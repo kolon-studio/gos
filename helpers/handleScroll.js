@@ -25,8 +25,14 @@ const applyAnimations = (el, top) => {
 
   const hide = () => {
     if (!el.animated) return;
+    if(options.animations[options.animationName].hasOwnProperty('animatedOut')) {
+      options.animations[options.animationName].animateOut(el.node, {
+        duration: options.duration / 1000,
+        ease: options.ease,
+        delay: options.delay / 1000,
+      });
+    }
 
-    // removeClasses(node, options.animatedClassNames);
     fireEvent('gsap:out', node);
 
     el.animated = false;
@@ -35,7 +41,7 @@ const applyAnimations = (el, top) => {
   const show = () => {
     if (el.animated) return;
 
-    options.animations[options.animationName].animate(el.node, {
+    options.animations[options.animationName].animateIn(el.node, {
       duration: options.duration / 1000,
       ease: options.ease,
       delay: options.delay / 1000,
@@ -47,11 +53,11 @@ const applyAnimations = (el, top) => {
   };
 
   if (options.mirror && top >= position.out && !options.once) {
-    // hide();
+    hide();
   } else if (top >= position.in) {
     show();
   } else if (el.animated && !options.once) {
-    // hide();
+    hide();
   }
 };
 

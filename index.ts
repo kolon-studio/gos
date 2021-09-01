@@ -21,20 +21,19 @@ let initialized = false;
  * Default options
  */
 let options: GOSOptions = {
-  offset: 0,
+  duration: 1000,
+  ease: 'power1.inOut',
   delay: 0,
-  style: {},
-  animation: 'fadeIn',
-  easing: 'power1.inOut',
-  duration: 400,
+  startEvent: 'DOMContentLoaded',
+  offset: 0,
   disable: false,
   mirror: false,
+  once: false,
   anchorPlacement: 'top-bottom',
-  startEvent: 'DOMContentLoaded',
-  useClassNames: false,
   disableMutationObserver: false,
   throttleDelay: 99,
   debounceDelay: 50,
+
   animations: defaultAnimations
 };
 
@@ -91,13 +90,13 @@ const refreshHard = function refreshHard() {
 const disable = function () {
   $gsapElements.forEach(function (el, i) {
     el.node.removeAttribute('data-gos');
+    el.node.removeAttribute('data-gos-offset');
+    el.node.removeAttribute('data-gos-delay');
     el.node.removeAttribute('data-gos-duration');
+    el.node.removeAttribute('data-gos-ease');
     el.node.removeAttribute('data-gos-mirror');
     el.node.removeAttribute('data-gos-once');
-    el.node.removeAttribute('data-gos-ease');
-    el.node.removeAttribute('data-gos-delay');
-    el.node.removeAttribute('data-gos-offset');
-    el.node.removeAttribute('data-gos-style');
+    el.node.removeAttribute('data-gos-placement');
   });
 };
 
@@ -164,7 +163,7 @@ const init = function init(settings) {
    */
   document
     .querySelector('body')
-    .setAttribute('data-gos-easing', options.easing);
+    .setAttribute('data-gos-ease', options.ease);
 
   document
     .querySelector('body')
@@ -209,12 +208,6 @@ const init = function init(settings) {
 
   return $gsapElements;
 };
-
-/**
- * Export Public API
- */
-
-export * from './types';
 
 export default {
   init,

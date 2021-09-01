@@ -2,24 +2,24 @@ import gsap from "gsap";
 
 export type GOSAnimation = {
   defaultStyles: gsap.TweenVars;
-  animateIn: (targets: gsap.TweenTarget) => gsap.core.Tween;
-  animateOut?: (targets: gsap.TweenTarget) => gsap.core.Tween;
+  animateIn: (targets: gsap.TweenTarget, defaultOptions: gsap.TweenVars) => gsap.core.Tween;
+  animateOut?: (targets: gsap.TweenTarget, defaultOptions: gsap.TweenVars) => gsap.core.Tween;
 }
 
 export type GOSOptions = {
-  offset: number,
-  delay: number,
-  style: Object,
-  animation: string,
-  easing: string,
   duration: number,
+  ease: string,
+  delay: number,
+
+  startEvent: string,
+  offset: number,
   disable: Boolean,
   mirror: Boolean,
+  once: Boolean,
   anchorPlacement: string,
-  startEvent: string,
-  useClassNames: Boolean,
   disableMutationObserver: Boolean,
   throttleDelay: number,
   debounceDelay: number,
+
   animations: Record<string, GOSAnimation>
 }

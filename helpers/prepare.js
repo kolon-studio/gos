@@ -6,14 +6,13 @@ import gsap from 'gsap/all';
 
 const prepare = function ($elements, options) {
   $elements.forEach((el, i) => {
+    const animationName = el.node.getAttribute('data-gos');
+    const offset = getInlineOption(el.node, 'offset', options.offset);
+    const delay = getInlineOption(el.node, 'delay', options.delay);
     const duration = getInlineOption(el.node, 'duration', options.duration);
+    const ease = getInlineOption(el.node, 'ease', options.ease);
     const mirror = getInlineOption(el.node, 'mirror', options.mirror);
     const once = getInlineOption(el.node, 'once', options.once);
-    const ease = getInlineOption(el.node, 'ease', options.ease);
-    const delay = getInlineOption(el.node, 'delay', options.delay);
-    const offset = getInlineOption(el.node, 'offset', options.offset);
-    const style = getInlineOption(el.node, 'style', options.style);
-    const animationName = el.node.getAttribute('data-gos');
 
     if(!animations.hasOwnProperty(animationName)) {
       console.error(`The animation "${animationName}" does not exist.`);
@@ -25,13 +24,13 @@ const prepare = function ($elements, options) {
       ...style,
       onComplete: () => {
         el.node.removeAttribute('data-gos');
+        el.node.removeAttribute('data-gos-offset');
+        el.node.removeAttribute('data-gos-delay');
         el.node.removeAttribute('data-gos-duration');
+        el.node.removeAttribute('data-gos-ease');
         el.node.removeAttribute('data-gos-mirror');
         el.node.removeAttribute('data-gos-once');
-        el.node.removeAttribute('data-gos-ease');
-        el.node.removeAttribute('data-gos-delay');
-        el.node.removeAttribute('data-gos-offset');
-        el.node.removeAttribute('data-gos-style');
+        el.node.removeAttribute('data-gos-placement');
       }
     });
 
@@ -41,7 +40,13 @@ const prepare = function ($elements, options) {
     };
 
     el.options = {
-      duration, once, ease, delay, animationName
+      animationName,
+      offset,
+      delay,
+      duration,
+      ease,
+      mirror,
+      once
     }
   });
 

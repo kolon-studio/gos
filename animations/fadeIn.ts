@@ -5,9 +5,16 @@ const fadeIn: GOSAnimation = {
   defaultStyles: {
     opacity: 0,
   },
-  animateIn(el: gsap.TweenTarget) {
+  animateIn(el: gsap.TweenTarget, defaultOptions: gsap.TweenVars) {
     return gsap.to(el, {
-      opacity: 1
+      ...defaultOptions,
+      opacity: 1,
+    })
+  },
+  animateOut(el: gsap.TweenTarget, defaultOptions: gsap.TweenVars) {
+    return gsap.to(el, {
+      ...defaultOptions,
+      opacity: 0,
     })
   }
 }
