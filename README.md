@@ -117,6 +117,30 @@ Each key (name) in the animations object can be used in the `data-gos` attribute
 <div data-gos="fadeUp"></div>
 ```
 
+
 ## ❔Questions
+
+Not compiling?
+
+You need to setup a typescript loader in order to compile typescript. Here is an example of a webpack config
+```node
+const path = require('path');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: 'ts-loader',
+          },
+        ],
+        include: /node_modules\/@kolonstudio\/gos/,
+      },
+    ],
+  },
+};
+```
 
 If you found a bug, have a question or an idea, please contact [kolon.studio](https://kolon.studio/about).
