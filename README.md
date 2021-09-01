@@ -5,6 +5,9 @@ GOS allows you to animate elements as you scroll down, and up. If you scroll bac
 
 Rather than using Css animations as AOS does, GOS utilizes Greensock Tweens.
 
+
+❗This packages needs a typescript compiler to compile and run in the browser
+
 ---
 ## ⚙ Installation
 ### Using package managers
