@@ -27,7 +27,7 @@ GOS.init({
   ease: 'power1.inOut', // easeing string See https://greensock.com/ease-visualizer for all availiable easings
   delay: 0, // Delat the animation by x milliseconds
   startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that GOS should initialize on
-  offset: 0, // offset (in px) from teh original trigger point
+  offset: 120, // offset (in px) from teh original trigger point
   disable: false, // accepts true or false
   mirror: false, // whether elements should animate out while scrolling past them
   once: false, // whether animation should happen only once - while scrolling down

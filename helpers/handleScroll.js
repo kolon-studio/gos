@@ -26,7 +26,7 @@ const applyAnimations = (el, top) => {
 
   const hide = () => {
     if (!el.animated) return;
-    if(animations[options.animationName].hasOwnProperty('animatedOut')) {
+    if(animations[options.animationName].hasOwnProperty('animateOut')) {
       animations[options.animationName].animateOut(el.node, {
         duration: options.duration / 1000,
         ease: options.ease,

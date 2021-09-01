@@ -25,7 +25,7 @@ let options: GOSOptions = {
   ease: 'power1.inOut',
   delay: 0,
   startEvent: 'DOMContentLoaded',
-  offset: 0,
+  offset: 120,
   disable: false,
   mirror: false,
   once: false,
