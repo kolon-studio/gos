@@ -32,7 +32,7 @@ GOS.init({
   disableMutationObserver: false,  // disables automatic mutations' detections (advanced)
   throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
   debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-  animations: [] // Read more about the animations below 
+  animations: {} // Read more about the animations below 
 });
 ```
 
@@ -96,7 +96,7 @@ export type GOSAnimation = {
 
 🤔 How to import the animation ?
 
-When you initialize the GOS.init() you can pass a animations array as a option like so
+When you initialize the GOS.init() you can pass an animations object as an option like so
 ```js
 
 import GOS from '@kolonstudio/gos';
@@ -105,11 +105,11 @@ import fadeUp from './animations/fadeUp'
 // You can also pass an option settings object
 // below listed deafult settings
 GOS.init({
-  animations: [fadeUp]
+  animations: {fadeUp}
 })
 ```
 
-Each key (name) in the animations array can be used in the `data-gos` attribute on
+Each key (name) in the animations object can be used in the `data-gos` attribute on
 ```html
 <div data-gos="fadeUp"></div>
 ```
