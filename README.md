@@ -9,11 +9,11 @@ Rather than using Css animations as AOS does, GOS utilizes Greensock Tweens.
 ## ⚙ Installation
 ### Using package managers
 
-Install `aos` package:
+Install `gos` package:
 * `yarn add @kolonstudio/gos`
 * or `npm install --save @kolonstudio/gos`
 
-Import script, initialize AOS:
+Import script, initialize GOS:
 ```js
 import GOS from '@kolonstudio/gos';
 
@@ -48,9 +48,9 @@ The element you wish to animate can have the following attributes `data-gos-*` a
     data-gos-offset="200"
     data-gos-duration="1000"
     data-gos-ease="power1.inOut"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top-center"
+    data-gos-mirror="true"
+    data-gos-once="false"
+    data-gos-anchor-placement="top-center"
   >
   </div>
 ```
