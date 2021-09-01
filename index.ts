@@ -10,6 +10,7 @@ import prepare from './helpers/prepare';
 import elements from './helpers/elements';
 import defaultAnimations from './animations';
 import {GOSOptions} from './types'
+
 /**
  * Private variables
  */

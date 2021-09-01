@@ -42,8 +42,6 @@ const applyAnimations = (el, top) => {
   const show = () => {
     if (el.animated) return;
 
-    console.log(options);
-
     animations[options.animationName].animateIn(el.node, {
       duration: options.duration / 1000,
       ease: options.ease,

@@ -1,6 +1,6 @@
 {
   "name": "@kolonstudio/gos",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Gsap on scroll",
   "main": "index.js",
   "types": "types/index.ts",
