@@ -17,7 +17,7 @@ const fireEvent = (eventName, data) => {
 };
 
 /**
- * Set or remove gsap-animate class
+ * Animate in or out
  * @param {node} el         element
  * @param {int}  top        scrolled distance
  */
@@ -63,7 +63,7 @@ const applyAnimations = (el, top) => {
 };
 
 /**
- * Scroll logic - add or remove 'gsap-animate' class on scroll
+ * Scroll logic
  *
  * @param  {array} $elements         array of elements nodes
  * @return {void}

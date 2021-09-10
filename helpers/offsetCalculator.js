@@ -61,7 +61,6 @@ export const getPositionIn = (el, defaultOffset, defaultAnchorPlacement) => {
 };
 
 export const getPositionOut = (el, defaultOffset) => {
-  const windowHeight = window.innerHeight;
   const anchor = getInlineOption(el, 'anchor');
   const additionalOffset = getInlineOption(el, 'offset', defaultOffset);
   let finalEl = el;

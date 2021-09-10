@@ -56,8 +56,6 @@ const initializeScroll = function initializeScroll() {
       handleScroll($gsapElements);
     }, options.throttleDelay)
   );
-
-  return $gsapElements;
 };
 
 /**
@@ -74,8 +72,6 @@ const refresh = function refresh(initialize = false) {
  * create array with new elements and trigger refresh
  */
 const refreshHard = function refreshHard() {
-  $gsapElements = elements();
-
   if (isDisabled(options.disable) || isBrowserNotSupported()) {
     return disable();
   }
@@ -88,6 +84,7 @@ const refreshHard = function refreshHard() {
  * Remove all attributes to reset applied styles
  */
 const disable = function () {
+  $gsapElements = elements();
   $gsapElements.forEach(function (el, i) {
     el.node.removeAttribute('data-gos');
     el.node.removeAttribute('data-gos-offset');
@@ -116,7 +113,6 @@ const isDisabled = function (optionDisable) {
 /**
  * Initializing GOS
  * - Create options merging defaults with user defined options
- * - Set attributes on <body> as global setting - css relies on it
  * - Attach preparing elements to options.startEvent,
  *   window resize and orientation change
  * - Attach function that handle scroll and everything connected to it
@@ -141,7 +137,7 @@ const init = function init(settings) {
   }
 
   /**
-   * Observe [gsap] elements
+   * Observe [data-gos] elements
    * If something is loaded by AJAX
    * it'll refresh plugin automatically
    */
@@ -156,20 +152,6 @@ const init = function init(settings) {
   if (isDisabled(options.disable) || isBrowserNotSupported()) {
     return disable();
   }
-
-  /**
-   * Set global settings on body, based on options
-   * so CSS can use it
-   */
-  document
-    .querySelector('body')
-    .setAttribute('data-gos-ease', options.ease);
-
-  document
-    .querySelector('body')
-    .setAttribute('data-gos-duration', options.duration.toString());
-
-  document.querySelector('body').setAttribute('data-gos-delay', options.delay.toString());
 
   /**
    * Handle initializing
