@@ -3,12 +3,13 @@
   "version": "1.0.12",
   "description": "Gsap on scroll",
   "main": "index.js",
-  "types": "types/index.ts",
   "dependencies": {
-    "gsap": "^3.7.1"
+    "gsap": "^3.10.3"
   },
   "devDependencies": {},
-  "scripts": {},
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/kolonstudio/gos.git"

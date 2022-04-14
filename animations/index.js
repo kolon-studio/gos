@@ -1,5 +1,5 @@
-import fadeIn from './fadeIn';
+import fadeIn from './fadeIn'
 
 export default {
-  fadeIn
+  fadeIn,
 }

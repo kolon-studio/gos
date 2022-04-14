@@ -4,6 +4,6 @@
  * like 'position'
  */
 export default () => {
-  const elements = document.querySelectorAll('[data-gos]');
-  return Array.prototype.map.call(elements, node => ({node}));
-};
+  const elements = document.querySelectorAll('[data-gos]')
+  return Array.prototype.map.call(elements, node => ({ node }))
+}

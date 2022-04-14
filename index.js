@@ -1,26 +1,25 @@
 // Modules & helpers
-import throttle from './libs/throttle';
-import debounce from './libs/debounce';
-import merge from './libs/merge';
-import observer from './libs/observer';
+import throttle from './libs/throttle'
+import debounce from './libs/debounce'
+import merge from './libs/merge'
+import observer from './libs/observer'
 
-import detect from './helpers/detector';
-import handleScroll from './helpers/handleScroll';
-import prepare from './helpers/prepare';
-import elements from './helpers/elements';
-import defaultAnimations from './animations';
-import {GOSOptions} from './types'
+import detect from './helpers/detector'
+import handleScroll from './helpers/handleScroll'
+import prepare from './helpers/prepare'
+import elements from './helpers/elements'
+import defaultAnimations from './animations'
 
 /**
  * Private variables
  */
-let $gsapElements = [];
-let initialized = false;
+let $gsapElements = []
+let initialized = false
 
 /**
  * Default options
  */
-let options: GOSOptions = {
+let options = {
   duration: 1000,
   ease: 'power1.inOut',
   delay: 0,
@@ -34,18 +33,18 @@ let options: GOSOptions = {
   throttleDelay: 99,
   debounceDelay: 50,
 
-  animations: defaultAnimations
-};
+  animations: defaultAnimations,
+}
 
 // Detect not supported browsers (<=IE9)
 // http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-const isBrowserNotSupported = () => document.all && !window.atob;
+const isBrowserNotSupported = () => document.all && !window.atob
 
 const initializeScroll = function initializeScroll() {
   // Extend elements objects in $gsapElements with their positions
-  $gsapElements = prepare($gsapElements, options);
+  $gsapElements = prepare($gsapElements, options)
   // Perform scroll event, to refresh view and show/hide elements
-  handleScroll($gsapElements);
+  handleScroll($gsapElements)
 
   /**
    * Handle scroll event to animate elements on scroll
@@ -53,19 +52,19 @@ const initializeScroll = function initializeScroll() {
   window.addEventListener(
     'scroll',
     throttle(() => {
-      handleScroll($gsapElements);
-    }, options.throttleDelay)
-  );
-};
+      handleScroll($gsapElements)
+    }, options.throttleDelay),
+  )
+}
 
 /**
  * Refresh GOS
  */
 const refresh = function refresh(initialize = false) {
   // Allow refresh only when it was first initialized on startEvent
-  if (initialize) initialized = true;
-  if (initialized) initializeScroll();
-};
+  if (initialize) initialized = true
+  if (initialized) initializeScroll()
+}
 
 /**
  * Hard refresh
@@ -73,29 +72,29 @@ const refresh = function refresh(initialize = false) {
  */
 const refreshHard = function refreshHard() {
   if (isDisabled(options.disable) || isBrowserNotSupported()) {
-    return disable();
+    return disable()
   }
 
-  refresh();
-};
+  refresh()
+}
 
 /**
  * Disable GOS
  * Remove all attributes to reset applied styles
  */
 const disable = function () {
-  $gsapElements = elements();
+  $gsapElements = elements()
   $gsapElements.forEach(function (el, i) {
-    el.node.removeAttribute('data-gos');
-    el.node.removeAttribute('data-gos-offset');
-    el.node.removeAttribute('data-gos-delay');
-    el.node.removeAttribute('data-gos-duration');
-    el.node.removeAttribute('data-gos-ease');
-    el.node.removeAttribute('data-gos-mirror');
-    el.node.removeAttribute('data-gos-once');
-    el.node.removeAttribute('data-gos-placement');
-  });
-};
+    el.node.removeAttribute('data-gos')
+    el.node.removeAttribute('data-gos-offset')
+    el.node.removeAttribute('data-gos-delay')
+    el.node.removeAttribute('data-gos-duration')
+    el.node.removeAttribute('data-gos-ease')
+    el.node.removeAttribute('data-gos-mirror')
+    el.node.removeAttribute('data-gos-once')
+    el.node.removeAttribute('data-gos-placement')
+  })
+}
 
 /**
  * Check if GOS should be disabled based on provided setting
@@ -107,8 +106,8 @@ const isDisabled = function (optionDisable) {
     (optionDisable === 'phone' && detect.phone()) ||
     (optionDisable === 'tablet' && detect.tablet()) ||
     (typeof optionDisable === 'function' && optionDisable() === true)
-  );
-};
+  )
+}
 
 /**
  * Initializing GOS
@@ -119,10 +118,10 @@ const isDisabled = function (optionDisable) {
  *   to window scroll event and fire once document is ready to set initial state
  */
 const init = function init(settings) {
-  options = merge(options, settings);
+  options = merge(options, settings)
 
   // Create initial array with elements -> to be fullfilled later with prepare()
-  $gsapElements = elements();
+  $gsapElements = elements()
 
   /**
    * Disable mutation observing if not supported
@@ -132,8 +131,8 @@ const init = function init(settings) {
       gsap: MutationObserver is not supported on this browser,
       code mutations observing has been disabled.
       You may have to call "refreshHard()" by yourself.
-    `);
-    options.disableMutationObserver = true;
+    `)
+    options.disableMutationObserver = true
   }
 
   /**
@@ -142,7 +141,7 @@ const init = function init(settings) {
    * it'll refresh plugin automatically
    */
   if (!options.disableMutationObserver) {
-    observer.ready('[data-gos]', refreshHard);
+    observer.ready('[data-gos]', refreshHard)
   }
 
   /**
@@ -150,7 +149,7 @@ const init = function init(settings) {
    * or when browser is not supported
    */
   if (isDisabled(options.disable) || isBrowserNotSupported()) {
-    return disable();
+    return disable()
   }
 
   /**
@@ -159,12 +158,12 @@ const init = function init(settings) {
   if (['DOMContentLoaded', 'load'].indexOf(options.startEvent) === -1) {
     // Listen to options.startEvent and initialize GOS
     document.addEventListener(options.startEvent, function () {
-      refresh(true);
-    });
+      refresh(true)
+    })
   } else {
     window.addEventListener('load', function () {
-      refresh(true);
-    });
+      refresh(true)
+    })
   }
 
   if (
@@ -172,7 +171,7 @@ const init = function init(settings) {
     ['complete', 'interactive'].indexOf(document.readyState) > -1
   ) {
     // Initialize GOS if default startEvent was already fired
-    refresh(true);
+    refresh(true)
   }
 
   /**
@@ -180,19 +179,19 @@ const init = function init(settings) {
    */
   window.addEventListener(
     'resize',
-    debounce(refresh, options.debounceDelay, true)
-  );
+    debounce(refresh, options.debounceDelay, true),
+  )
 
   window.addEventListener(
     'orientationchange',
-    debounce(refresh, options.debounceDelay, true)
-  );
+    debounce(refresh, options.debounceDelay, true),
+  )
 
-  return $gsapElements;
-};
+  return $gsapElements
+}
 
 export default {
   init,
   refresh,
-  refreshHard
-};
+  refreshHard,
+}

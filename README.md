@@ -1,24 +1,26 @@
 # GOS
+
 Gos "Greensock on scroll" is a library inspired by [AOS](https://github.com/michalsnik/aos).
 
 GOS allows you to animate elements as you scroll down, and up. If you scroll back to top, elements will animate to it's previous state and are ready to animate again if you scroll down.
 
-Rather than using Css animations as AOS does, GOS utilizes Greensock Tweens.
-
-
-❗This packages needs a typescript compiler to compile and run in the browser
+Rather than using CSS animations as AOS does, GOS utilizes Greensock Tweens.
 
 ---
+
 ## ⚙ Installation
+
 ### Using package managers
 
 Install `gos` package:
-* `yarn add @kolonstudio/gos`
-* or `npm install --save @kolonstudio/gos`
+
+- `yarn add @kolonstudio/gos`
+- or `npm install --save @kolonstudio/gos`
 
 Import script, initialize GOS:
+
 ```js
-import GOS from '@kolonstudio/gos';
+import GOS from '@kolonstudio/gos'
 
 // You can also pass an option settings object
 // below listed deafult settings
@@ -32,41 +34,42 @@ GOS.init({
   mirror: false, // whether elements should animate out while scrolling past them
   once: false, // whether animation should happen only once - while scrolling down
   anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
-  disableMutationObserver: false,  // disables automatic mutations' detections (advanced)
+  disableMutationObserver: false, // disables automatic mutations' detections (advanced)
   throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
   debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-  animations: {} // Read more about the animations below 
-});
+  animations: {}, // Read more about the animations below
+})
 ```
 
 ---
+
 🤔 How to use it?
 
-
 The element you wish to animate can have the following attributes `data-gos-*` attributes:
+
 ```html
-  <div
-    data-gos="fadeIn"
-    data-gos-delay="50"
-    data-gos-offset="200"
-    data-gos-duration="1000"
-    data-gos-ease="power1.inOut"
-    data-gos-mirror="true"
-    data-gos-once="false"
-    data-gos-anchor-placement="top-center"
-  >
-  </div>
+<div
+  data-gos="fadeIn"
+  data-gos-delay="50"
+  data-gos-offset="200"
+  data-gos-duration="1000"
+  data-gos-ease="power1.inOut"
+  data-gos-mirror="true"
+  data-gos-once="false"
+  data-gos-anchor-placement="top-center"
+></div>
 ```
 
 ---
+
 ## 💣 The animations
 
 Here is an example of the standard "fadeIn" animation
-```ts
-import gsap from 'gsap/all';
-import {GOSAnimation} from '@kolonstudio/gos';
 
-const fadeIn: GOSAnimation = {
+```ts
+import gsap from 'gsap'
+
+const fadeIn = {
   defaultStyles: {
     opacity: 0,
   },
@@ -82,65 +85,33 @@ const fadeIn: GOSAnimation = {
       ...defaultOptions,
       opacity: 0,
     })
-  }
+  },
 }
 
-export default fadeIn;
-```
-
-Here the GOSAnimation contract
-```ts
-export type GOSAnimation = {
-  defaultStyles: gsap.TweenVars;
-  animateIn: (targets: gsap.TweenTarget, defaultOptions: gsap.TweenVars) => gsap.core.Tween;
-  animateOut?: (targets: gsap.TweenTarget, defaultOptions: gsap.TweenVars) => gsap.core.Tween;
-}
+export default fadeIn
 ```
 
 🤔 How to import the animation ?
 
 When you initialize the GOS.init() you can pass an animations object as an option like so
-```js
 
-import GOS from '@kolonstudio/gos';
+```js
+import GOS from '@kolonstudio/gos'
 import fadeUp from './animations/fadeUp'
 
 // You can also pass an option settings object
 // below listed deafult settings
 GOS.init({
-  animations: {fadeUp}
+  animations: { fadeUp },
 })
 ```
 
 Each key (name) in the animations object can be used in the `data-gos` attribute on
+
 ```html
 <div data-gos="fadeUp"></div>
 ```
 
-
 ## ❔Questions
-
-Not compiling?
-
-You need to setup a typescript loader in order to compile typescript. Here is an example of a webpack config
-```node
-const path = require('path');
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
-        include: /node_modules\/@kolonstudio\/gos/,
-      },
-    ],
-  },
-};
-```
 
 If you found a bug, have a question or an idea, please contact [kolon.studio](https://kolon.studio/about).

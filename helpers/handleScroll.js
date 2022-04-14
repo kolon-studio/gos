@@ -1,20 +1,20 @@
-import detect from './detector';
-import animations from '../animations';
+import detect from './detector'
+import animations from '../animations'
 
 const fireEvent = (eventName, data) => {
-  let customEvent;
+  let customEvent
 
   if (detect.ie11()) {
-    customEvent = document.createEvent('CustomEvent');
-    customEvent.initCustomEvent(eventName, true, true, {detail: data});
+    customEvent = document.createEvent('CustomEvent')
+    customEvent.initCustomEvent(eventName, true, true, { detail: data })
   } else {
     customEvent = new CustomEvent(eventName, {
-      detail: data
-    });
+      detail: data,
+    })
   }
 
-  return document.dispatchEvent(customEvent);
-};
+  return document.dispatchEvent(customEvent)
+}
 
 /**
  * Animate in or out
@@ -22,45 +22,45 @@ const fireEvent = (eventName, data) => {
  * @param {int}  top        scrolled distance
  */
 const applyAnimations = (el, top) => {
-  const {options, position, node} = el;
+  const { options, position, node } = el
 
   const hide = () => {
-    if (!el.animated) return;
-    if(animations[options.animationName].hasOwnProperty('animateOut')) {
+    if (!el.animated) return
+    if (animations[options.animationName].hasOwnProperty('animateOut')) {
       animations[options.animationName].animateOut(el.node, {
         duration: options.duration / 1000,
         ease: options.ease,
         delay: options.delay / 1000,
-      });
+      })
     }
 
-    fireEvent('gsap:out', node);
+    fireEvent('gsap:out', node)
 
-    el.animated = false;
-  };
+    el.animated = false
+  }
 
   const show = () => {
-    if (el.animated) return;
+    if (el.animated) return
 
     animations[options.animationName].animateIn(el.node, {
       duration: options.duration / 1000,
       ease: options.ease,
       delay: options.delay / 1000,
-    });
+    })
 
-    fireEvent('gsap:in', node);
+    fireEvent('gsap:in', node)
 
-    el.animated = true;
-  };
+    el.animated = true
+  }
 
   if (options.mirror && top >= position.out && !options.once) {
-    hide();
+    hide()
   } else if (top >= position.in) {
-    show();
+    show()
   } else if (el.animated && !options.once) {
-    hide();
+    hide()
   }
-};
+}
 
 /**
  * Scroll logic
@@ -69,6 +69,6 @@ const applyAnimations = (el, top) => {
  * @return {void}
  */
 const handleScroll = $elements =>
-  $elements.forEach((el, i) => applyAnimations(el, window.pageYOffset));
+  $elements.forEach((el, i) => applyAnimations(el, window.pageYOffset))
 
-export default handleScroll;
+export default handleScroll
