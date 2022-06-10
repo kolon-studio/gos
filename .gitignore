@@ -8,6 +8,7 @@ node_modules
 *.njsproj
 *.sln
 *.sw*
+*.log
 
 # Local db files
 .DS_Store

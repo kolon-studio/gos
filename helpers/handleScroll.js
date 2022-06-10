@@ -34,7 +34,7 @@ const applyAnimations = (el, top) => {
       })
     }
 
-    fireEvent('gsap:out', node)
+    fireEvent('gos:out', node)
 
     el.animated = false
   }
@@ -48,7 +48,7 @@ const applyAnimations = (el, top) => {
       delay: options.delay / 1000,
     })
 
-    fireEvent('gsap:in', node)
+    fireEvent('gos:in', node)
 
     el.animated = true
   }

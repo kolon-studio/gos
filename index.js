@@ -11,12 +11,6 @@ import elements from './helpers/elements'
 import defaultAnimations from './animations'
 
 /**
- * Private variables
- */
-let $gsapElements = []
-let initialized = false
-
-/**
  * Default options
  */
 let options = {
@@ -40,9 +34,10 @@ let options = {
 // http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
 const isBrowserNotSupported = () => document.all && !window.atob
 
-const initializeScroll = function initializeScroll() {
+const initializeGos = function initializeGos() {
   // Extend elements objects in $gsapElements with their positions
-  $gsapElements = prepare($gsapElements, options)
+  let $gsapElements = prepare(elements(), options)
+
   // Perform scroll event, to refresh view and show/hide elements
   handleScroll($gsapElements)
 
@@ -60,10 +55,8 @@ const initializeScroll = function initializeScroll() {
 /**
  * Refresh GOS
  */
-const refresh = function refresh(initialize = false) {
-  // Allow refresh only when it was first initialized on startEvent
-  if (initialize) initialized = true
-  if (initialized) initializeScroll()
+const refresh = function refresh() {
+  initializeGos()
 }
 
 /**
@@ -83,7 +76,7 @@ const refreshHard = function refreshHard() {
  * Remove all attributes to reset applied styles
  */
 const disable = function () {
-  $gsapElements = elements()
+  let $gsapElements = elements()
   $gsapElements.forEach(function (el, i) {
     el.node.removeAttribute('data-gos')
     el.node.removeAttribute('data-gos-offset')
@@ -117,11 +110,9 @@ const isDisabled = function (optionDisable) {
  * - Attach function that handle scroll and everything connected to it
  *   to window scroll event and fire once document is ready to set initial state
  */
+
 const init = function init(settings) {
   options = merge(options, settings)
-
-  // Create initial array with elements -> to be fullfilled later with prepare()
-  $gsapElements = elements()
 
   /**
    * Disable mutation observing if not supported
@@ -155,16 +146,6 @@ const init = function init(settings) {
   /**
    * Handle initializing
    */
-  if (['DOMContentLoaded', 'load'].indexOf(options.startEvent) === -1) {
-    // Listen to options.startEvent and initialize GOS
-    document.addEventListener(options.startEvent, function () {
-      refresh(true)
-    })
-  } else {
-    window.addEventListener('load', function () {
-      refresh(true)
-    })
-  }
 
   if (
     options.startEvent === 'DOMContentLoaded' &&
@@ -172,6 +153,17 @@ const init = function init(settings) {
   ) {
     // Initialize GOS if default startEvent was already fired
     refresh(true)
+  } else {
+    if (['DOMContentLoaded', 'load'].indexOf(options.startEvent) === -1) {
+      // Listen to options.startEvent and initialize GOS
+      document.addEventListener(options.startEvent, function () {
+        refresh(true)
+      })
+    } else {
+      window.addEventListener('load', function () {
+        refresh(true)
+      })
+    }
   }
 
   /**
@@ -179,15 +171,15 @@ const init = function init(settings) {
    */
   window.addEventListener(
     'resize',
-    debounce(refresh, options.debounceDelay, true),
+    debounce(() => refresh(false), options.debounceDelay, false),
   )
 
   window.addEventListener(
     'orientationchange',
-    debounce(refresh, options.debounceDelay, true),
+    debounce(() => refresh(false), options.debounceDelay, false),
   )
 
-  return $gsapElements
+  return true
 }
 
 export default {

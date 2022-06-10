@@ -1,18 +1,14 @@
 {
   "name": "@kolonstudio/gos",
-  "version": "1.0.12",
+  "version": "1.0.2",
   "description": "Gsap on scroll",
   "main": "index.js",
   "dependencies": {
-    "gsap": "^3.10.3"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "gsap": "^3"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/kolonstudio/gos.git"
+    "url": "git@github.com:kolon-studio/gos.git"
   },
   "author": "kolonstudio",
   "license": "MIT",
